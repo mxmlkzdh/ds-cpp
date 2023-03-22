@@ -1,6 +1,6 @@
 #include <iostream>
 #include "container/array.hpp"
 
-int main(int argc, char const* argv[]) {
+int main(int, char const**) {
     return 0;
 }

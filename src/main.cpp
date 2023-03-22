@@ -2,7 +2,7 @@
 #include "container/array.hpp"
 #include "container/vector.hpp"
 
-int main(int argc, char const* argv[]) {
+int main(int, char const**) {
     std::cout << "Hello, Max!" << std::endl;
     return 0;
 }
