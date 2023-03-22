@@ -12,8 +12,6 @@ FetchContent_Declare(googletest URL https://github.com/google/googletest/archive
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-enable_testing()
-
 add_executable(array.test container/array.test.cpp)
 target_link_libraries(array.test GTest::gtest_main)
 add_executable(vector.test container/vector.test.cpp)
