@@ -10,8 +10,8 @@ add_compile_options($<$<CONFIG:Debug>:-Wextra>)
 add_compile_options($<$<CONFIG:Debug>:-Wpedantic>)
 
 add_executable(main src/main.cpp)
-include_directories("include")
 
+include_directories("include")
 include_directories("external")
 
 include(CTest)
