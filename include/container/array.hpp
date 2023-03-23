@@ -7,7 +7,7 @@ namespace Max {
 template <typename _T, std::size_t _Size>
 class Array {
 
-    static_assert(_Size > 0, "Size of Max::Array should be positive.");
+    static_assert(_Size >= 0, "Size of Max::Array cannot be negative.");
 
     using SizeType = std::size_t;
     using ValueType = _T;
@@ -55,15 +55,27 @@ public:
         return mData[index];
     }
     Reference front() {
+        if (empty()) {
+            throw("Empty array!");
+        }
         return mData[0];
     }
     ConstReference front() const {
+        if (empty()) {
+            throw("Empty array!");
+        }
         return mData[0];
     }
     Reference back() {
+        if (empty()) {
+            throw("Empty array!");
+        }
         return mData[_Size - 1];
     }
     ConstReference back() const {
+        if (empty()) {
+            throw("Empty array!");
+        }
         return mData[_Size - 1];
     }
     /// @brief Get the pointer to the first element in the array.
@@ -81,6 +93,11 @@ public:
     /// @return The size of the array.
     SizeType size() const {
         return _Size;
+    }
+    /// @brief Indicates if the array is empty.
+    /// @return true if array is empty and false otherwise.
+    bool empty() {
+        return _SIZE == 0;
     }
 
 };
