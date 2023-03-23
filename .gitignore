@@ -1,3 +1,4 @@
 build/
 .cspell/
 .vscode/
+.DS_Store
