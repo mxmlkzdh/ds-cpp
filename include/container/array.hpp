@@ -66,13 +66,19 @@ public:
     ConstReference back() const {
         return mData[_Size - 1];
     }
+    /// @brief Get the pointer to the first element in the array.
+    /// @return The pointer to the first element in the array.
     Pointer data() noexcept {
         return mData;
     }
+    /// @brief Get the const pointer to the first element in the array.
+    /// @return The const pointer to the first element in the array.
     ConstPointer data() const noexcept {
         return mData;
     }
 
+    /// @brief Get the size of the array.
+    /// @return The size of the array.
     SizeType size() const {
         return _Size;
     }
