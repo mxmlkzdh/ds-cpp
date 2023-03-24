@@ -14,9 +14,11 @@ class Vector {
     using ConstReference = const _T&;
     using Pointer = ValueType*;
     using ConstPointer = const _T*;
+    using TemporaryReference = ValueType&&;
 
 private:
 
+    static const int INIT_CAPACITY = 2;
     ValueType* mData;
     SizeType mSize;
     SizeType mCapacity;
@@ -25,7 +27,7 @@ private:
         spdlog::debug("reAlloc with the new size {}.", newSize);
         ValueType* temp = new ValueType[newSize];
         for (size_t i = 0; i < mSize; i++) {
-            temp[i] = mData[i];
+            temp[i] = std::move(mData[i]);
         }
         delete[] mData;
         mData = temp;
@@ -36,7 +38,7 @@ public:
     // Special Members
     Vector(): mData(nullptr), mSize(0), mCapacity(0) {
         spdlog::debug("Vector creations starts.");
-        reAlloc(1);
+        reAlloc(INIT_CAPACITY);
         spdlog::debug("Vector created.");
     }
     ~Vector() {
@@ -49,7 +51,7 @@ public:
     Vector& operator=(const Vector& other) = default;
     Vector& operator=(Vector&& other) = default;
 
-   // Element Access
+    // Element Access
     Reference operator[](const SizeType index) {
         return mData[index];
     }
@@ -82,13 +84,18 @@ public:
     }
 
     // Element Insertion
-    void push_back(ValueType value) {
+    void push_back(ConstReference value) {
         if (mSize == mCapacity) {
             reAlloc(mSize * 2);
         }
-        mData[mSize++] = value;
+        mData[mSize++] = std::move(value);
     }
-
+    void push_back(TemporaryReference value) {
+        if (mSize == mCapacity) {
+            reAlloc(mSize * 2);
+        }
+        mData[mSize++] = std::move(value);
+    }
     void emplace_back(Reference value) {
         if (mSize == mCapacity) {
             reAlloc(mSize * 2);
