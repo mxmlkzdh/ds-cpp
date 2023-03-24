@@ -18,9 +18,9 @@ class Vector {
 private:
 
     static const int INIT_CAPACITY = 2;
-    ValueType* mData;
-    SizeType mSize;
-    SizeType mCapacity;
+    ValueType* mData = nullptr;
+    SizeType mSize = 0;
+    SizeType mCapacity = 0;
 
     void reAlloc(SizeType newSize) {
         ValueType* temp = new ValueType[newSize];
@@ -34,16 +34,16 @@ private:
 
 public:
     // Special Members
-    Vector(): mData(nullptr), mSize(0), mCapacity(0) {
+    Vector() {
         reAlloc(INIT_CAPACITY);
     }
     ~Vector() {
         delete[] mData;
     }
     Vector(const Vector& other) = default;
-    Vector(Vector&& other) = default;
+    Vector(Vector&& other) noexcept = default;
     Vector& operator=(const Vector& other) = default;
-    Vector& operator=(Vector&& other) = default;
+    Vector& operator=(Vector&& other) noexcept= default;
 
     // Element Access
     Reference operator[](const SizeType index) {
