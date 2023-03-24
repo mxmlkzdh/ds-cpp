@@ -1,7 +1,6 @@
 #pragma once
 
 #include <cstddef>
-#include <spdlog/spdlog.h>
 
 namespace Max {
 
@@ -24,7 +23,6 @@ private:
     SizeType mCapacity;
 
     void reAlloc(SizeType newSize) {
-        spdlog::debug("reAlloc with the new size {}.", newSize);
         ValueType* temp = new ValueType[newSize];
         for (size_t i = 0; i < mSize; i++) {
             temp[i] = std::move(mData[i]);
@@ -37,14 +35,10 @@ private:
 public:
     // Special Members
     Vector(): mData(nullptr), mSize(0), mCapacity(0) {
-        spdlog::debug("Vector creations starts.");
         reAlloc(INIT_CAPACITY);
-        spdlog::debug("Vector created.");
     }
     ~Vector() {
-        spdlog::debug("Vector destruction starts.");
         delete[] mData;
-        spdlog::debug("Vector destroyed.");
     }
     Vector(const Vector& other) = default;
     Vector(Vector&& other) = default;
