@@ -96,10 +96,13 @@ public:
         }
         mData[mSize++] = std::move(value);
     }
-    void emplace_back(Reference value) {
+    template<typename... Args>
+    Reference emplace_back(Args&&... args) {
         if (mSize == mCapacity) {
             reAlloc(mSize * 2);
         }
+        new(&mData[mSize]) ValueType(std::forward<Args>(args) ...);
+        return mData[mSize++];
     }
 
     /// @brief Get the size of the vector.
