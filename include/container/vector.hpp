@@ -72,25 +72,25 @@ public:
     }
     Reference front() {
         if (empty()) {
-            throw("Empty array!");
+            throw("Empty vector!");
         }
         return mData[0];
     }
     ConstReference front() const {
         if (empty()) {
-            throw("Empty array!");
+            throw("Empty vector!");
         }
         return mData[0];
     }
     Reference back() {
         if (empty()) {
-            throw("Empty array!");
+            throw("Empty vector!");
         }
         return mData[mSize - 1];
     }
     ConstReference back() const {
         if (empty()) {
-            throw("Empty array!");
+            throw("Empty vector!");
         }
         return mData[mSize - 1];
     }
