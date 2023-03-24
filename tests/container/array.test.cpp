@@ -48,3 +48,11 @@ TEST(MaxArray, OutOfBounds) {
     Max::Array<int, 3> tempArray;
     EXPECT_THROW(tempArray.at(4), const char*);
 }
+
+TEST(MaxArray, At) {
+    Max::Array<int, 3> tempArray;
+    tempArray[0] = 11;
+    tempArray[1] = 15;
+    tempArray[2] = 19;
+    EXPECT_EQ(tempArray.at(2), 19);
+}
