@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <string>
 
-TEST(MaxVector, VectorSize) {
+TEST(MaxVector, VectorSizePush) {
     Max::Vector<int> tempVector;
     tempVector.push_back(1);
     tempVector.push_back(2);
@@ -10,6 +10,24 @@ TEST(MaxVector, VectorSize) {
     tempVector.push_back(4);
     tempVector.push_back(5);
     EXPECT_EQ(tempVector.size(), 5);
+}
+
+TEST(MaxVector, VectorSizeEmplace) {
+    Max::Vector<int> tempVector;
+    tempVector.emplace_back(1);
+    tempVector.emplace_back(2);
+    tempVector.emplace_back(3);
+    EXPECT_EQ(tempVector.size(), 3);
+}
+
+TEST(MaxVector, VectorCapacity) {
+    Max::Vector<int> tempVector;
+    tempVector.push_back(1);
+    tempVector.push_back(2);
+    tempVector.push_back(3);
+    tempVector.push_back(4);
+    tempVector.push_back(5);
+    EXPECT_EQ(tempVector.capacity(), 8);
 }
 
 TEST(MaxVector, Front) {

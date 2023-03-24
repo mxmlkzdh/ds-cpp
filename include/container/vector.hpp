@@ -105,6 +105,11 @@ public:
         return mData[mSize++];
     }
 
+    /// @brief Get the capacity of the vector.
+    /// @return The capacity of the vector.
+    SizeType capacity() const {
+        return mCapacity;
+    }
     /// @brief Get the size of the vector.
     /// @return The size of the vector.
     SizeType size() const {
