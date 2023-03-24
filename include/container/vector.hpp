@@ -58,6 +58,18 @@ public:
     ConstReference operator[](const SizeType index) const {
         return mData[index];
     }
+    Reference at(const SizeType index) {
+        if (index >= mSize) {
+            throw("Index out of bound!");
+        }
+        return mData[index];
+    }
+    ConstReference at(const SizeType index) const {
+        if (index >= mSize) {
+            throw("Index out of bound!");
+        }
+        return mData[index];
+    }
     Reference front() {
         if (empty()) {
             throw("Empty array!");

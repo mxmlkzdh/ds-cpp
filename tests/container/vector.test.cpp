@@ -55,3 +55,19 @@ TEST(MaxVector, EmptyVectorBack) {
     Max::Vector<int> tempVector;
     EXPECT_THROW(tempVector.back(), const char*);
 }
+
+TEST(MaxVector, OutOfBounds) {
+    Max::Vector<int> tempVector;
+    tempVector.push_back(1);
+    tempVector.push_back(2);
+    tempVector.push_back(3);
+    EXPECT_THROW(tempVector.at(4), const char*);
+}
+
+TEST(MaxVector, At) {
+    Max::Vector<int> tempVector;
+    tempVector.push_back(1);
+    tempVector.push_back(21);
+    tempVector.push_back(3);
+    EXPECT_EQ(tempVector.at(1), 21);
+}
