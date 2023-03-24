@@ -96,8 +96,8 @@ public:
     }
     /// @brief Indicates if the array is empty.
     /// @return true if array is empty and false otherwise.
-    bool empty() {
-        return _SIZE == 0;
+    bool empty() const {
+        return _Size == 0;
     }
 
 };
