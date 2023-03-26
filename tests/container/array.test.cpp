@@ -24,8 +24,8 @@ TEST(MaxArray, Back) {
     Max::Array<int, 3> tempArray;
     tempArray[0] = 11;
     tempArray[1] = 15;
-    tempArray[2] = 19;
-    EXPECT_EQ(tempArray.back(), 19);
+    tempArray[2] = 21;
+    EXPECT_EQ(tempArray.back(), 21);
 }
 
 TEST(MaxArray, Data) {
