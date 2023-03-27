@@ -1,1 +1,1 @@
-# A set of data structures and containers written in modern C++!
+# A set of data structures and containers written in modern C++
