@@ -1,7 +1,6 @@
 #pragma once
 
 #include <cstddef>
-#include <stack>
 
 namespace Max {
 
@@ -34,6 +33,7 @@ private:
     }
 
 public:
+
     // Special Members
     Stack() {
         reAlloc(INIT_CAPACITY);
